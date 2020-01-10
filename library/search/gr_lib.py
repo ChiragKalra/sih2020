@@ -3,8 +3,6 @@ import collections
 from goodreads import client
 from time import time
 
-__search__ = 'the jungle book'
-
 api_key = 'EqndoyFbNOOEy27w5SDCA'
 api_secret = 'WDlcyAlmNzIHuzo3Ld66YkXeqUAFCLuKvGmlOpRQ8'
 
@@ -26,10 +24,3 @@ def search(local_client, q, page=1, search_field='all', strict=False):
 
 
 gc = client.GoodreadsClient(api_key, api_secret)
-
-start_time = time()
-
-books = search(gc, __search__.lower(), search_field='title', strict=True)
-
-print(books)
-print(time() - start_time)

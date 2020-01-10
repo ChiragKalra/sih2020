@@ -1,6 +1,18 @@
 /*
+const searchButton = document.getElementById("search");
+
+searchButton.onclick = bruh;
+
+function bruh() {
+
+    search_q = "asdasadasafasdgrw";
+
+}
+8/
+
+
+
 //get elements
-const txtElementToken = document.getElementById("token");
 const fileUpload = document.getElementById("upload");
 const okButton = document.getElementById("clickok");
 
@@ -35,5 +47,7 @@ function keypress(e) {
   }
 }
 
-okButton.onclick = bruh;
+
 */
+
+

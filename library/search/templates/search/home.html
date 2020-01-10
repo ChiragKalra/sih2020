@@ -1,30 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Book Search</title>
+<html class="no-js consumer" lang="en">
 
+  <head>
     {% load static %}
 
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <meta charset="utf-8">
+    <title>
+      Voice Based Book Search
+    </title>
+    <link href="//www.google.com/images/icons/product/chrome-32.png" rel="icon" type="image/ico">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=latin" rel=
+    "stylesheet" nonce="zD6xYLNxtB1MOKdnJ5JMmQ">
+    <link href="/static/css/chrome.min.css" rel="stylesheet" nonce="zD6xYLNxtB1MOKdnJ5JMmQ">
+    <link href="/static/css/main.css" rel="stylesheet">
+  </head>
 
-    <script src="{% static 'css/main.css' %}"></script>
-</head>
-<body>
-  <!-- Content -->
-  <div class="background">
-    <img src="https://media.giphy.com/media/xTkcEQACH24SMPxIQg/giphy.gif" class="loading">
 
-    <div class="content">
-      <input type="file" id="upload">
-      <label for="upload"><img src="img/upload.png" alt="upload image" class="upload"></label>
+  <body class="" id="grid">
+    <div class="browser-landing" id="main">
+      <div class="compact marquee-stacked" id="marquee">
+        <div class="marquee-copy">
+          <h1>
+              Voice Based Book Search
+          </h1>
+        </div>
+      </div>
+      <div class="compact marquee">
+        <div id="info">
+          <p id="info_start">
+            Click on the microphone icon to record book title.
+          </p>
+          <p id="info_speak_now" style="display:none">
+            Speak now.
+          </p>
+          <p id="info_no_speech" style="display:none">
+            No speech was detected!
+          </p>
+          <p id="info_no_microphone" style="display:none">
+            No microphone was found. Ensure that a microphone is installed.
+          </p>
+          <p id="info_allow" style="display:none">
+            Click the "Allow" button above to enable your microphone.
+          </p>
+          <p id="info_denied" style="display:none">
+            Permission to use microphone was denied.
+          </p>
+          <p id="info_blocked" style="display:none">
+            Permission to use microphone is blocked. To change, go to
+            chrome://settings/contentExceptions#media-stream
+          </p>
+          <p id="info_upgrade" style="display:none">
+            Web Speech API is not supported by this browser.
+          </p>
+        </div>
+        <div id="div_start">
+          <button id="start_button" onclick="startButton(event)"><img alt="Start" id="start_img"
+          src="/static/img/mic.gif"></button>
+        </div>
+        <div id="results">
+          <span class="final" id="final_span"></span> <span class="interim" id=
+          "interim_span"></span>
+        </div>
+        <div id="copy">
+          <button class="button" id="email_button" onclick="emailButton()">
+            Search by Title
+          </button>
+        </div>
+        <div id="search_results">
+        </div>
+        <div class="compact marquee" id="div_language">
+          <select id="select_language" onchange="updateCountry()">
+            </select>&nbsp;&nbsp; <select id="select_dialect">
+            </select>
+        </div>
+      </div>
     </div>
-  </div>
 
-
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
-</script>
-
-</body>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+          integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="/static/js/chrome.min.js" nonce="zD6xYLNxtB1MOKdnJ5JMmQ">
+    </script>
+    <script src="/static/js/speech.js" nonce="zD6xYLNxtB1MOKdnJ5JMmQ">
+    </script>
+    <script src="/static/js/main.js" nonce="zD6xYLNxtB1MOKdnJ5JMmQ">
+    </script>
+  </body>
 </html>
