@@ -226,6 +226,14 @@ function capitalize(s) {
 
 function emailButton() {
     let query_txt = final_span.innerHTML;
+    $('#loading').show();
+    let searchResDiv = $("#search_results");
+    searchResDiv.hide();
+    [].forEach.call(document.querySelectorAll('.item'),function(e){
+        e.parentNode.removeChild(e);
+    });
+    let noresultstext = $('#no_results');
+    noresultstext.hide();
     $.ajax(
     {
         type:"GET",
@@ -235,19 +243,24 @@ function emailButton() {
         },
         success: function(dt)
         {
-            let data = JSON.parse(dt);
-            for (let boo in data) {
-                let raw = "<div class=\"item\">\n" +
-                    "<img src="+ data[boo].small_img +" class='small_img'>" +
-                    "            <span class='title'>"+ data[boo].title +"</span>\n" +
-                    "            by\n" +
-                    "            <span class=\"author\">"+ data[boo].author +"</span><br>\n" +
-                    "            <span class=\"genre\"><i>"+ data[boo].genre +"</i></span>\n" +
-                    "          </div>";
-                let newItem = $(raw);
-                $('#search_results').append(newItem);
+            if(dt === '[]') {
+                noresultstext.show();
+            } else {
+                let data = JSON.parse(dt);
+                for (let boo in data) {
+                    let raw = "<div class=\"item\">\n" +
+                        "<img src=" + data[boo].small_img + " class='small_img' alt='small desc'><div class='text_div'>" +
+                        "            <span class='title'>" + data[boo].title + "</span>\n" +
+                        "            by\n" +
+                        "            <span class=\"author\">" + data[boo].author + "</span><br><br>\n" +
+                        "            <span class=\"genre\"><i>" + data[boo].genre + "</i></span>\n" +
+                        "          </div></div>";
+                    let newItem = $(raw);
+                    $('#search_results').append(newItem);
+                }
             }
-            $('#search_results').toggle('show');
+            searchResDiv.show();
+            $('#loading').hide();
         }
      });
 }
